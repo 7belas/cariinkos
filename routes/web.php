@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/172410101106', 'AdminController@index')->name('home');
+
 Route::get('/kirimemail','KosEmailController@index');
 
 Auth::routes();
