@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
+
+    public function profil(){
+        return view('home');
+    }
+    public function isisaldo(){
+        return view('isisaldo');
+    }
 }

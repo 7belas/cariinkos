@@ -22,6 +22,8 @@ Route::get('/kirimemail','KosEmailController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profil', 'HomeController@profil')->name('profil');
+Route::get('/isisaldo', 'HomeController@isisaldo')->name('isisaldo');
 
 Route::get('/pesanan', function () {
     return view('pesanan');

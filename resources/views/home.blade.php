@@ -1,23 +1,44 @@
 @extends('layouts.app')
-
+@section ('title','Profil')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profil Saya</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                                <table class="table">
+                    <tbody>
+                        <tr>
+                        
+                        <tr>
+                        <th>Nama</th>
+                            <td> {{ Auth::user()->name }}</td>
+                            
+                        </tr>
+                        <tr>
+                        <th>No Telepon</th>
+                        @if (Auth::user()->nohp === 0)
+                            <td>Masukkan no hp anda</td>
+                        @else
+                            <td>{{ Auth::user()->nohp }} </td>
+                        @endif
+                        </tr>
+                        <tr>
+                        <th>Email</th>
+                            <td> {{ Auth::user()->email }}</td>
+                        </tr>
+                        <th>Saldo</th>
+                            <td> {{ Auth::user()->saldo }}</td>
+                            <td> <a href="{{url('/isisaldo')  }}" class="btn btn-primary" role="button">Isi Saldo </a>
+                            </td>
+                        </tr>                       
+                    </tbody>
+                </table>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-
-                    You are logged in!
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
