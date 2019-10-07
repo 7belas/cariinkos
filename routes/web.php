@@ -25,6 +25,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profil', 'HomeController@profil')->name('profil');
 Route::get('/isisaldo', 'HomeController@isisaldo')->name('isisaldo');
 
+Route::post('/isisaldo/transfer','PaymentController@store');
+
+
 Route::get('/pesanan', function () {
     return view('pesanan');
 });
