@@ -37,7 +37,14 @@ class KonfirmasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('payments')->insert([
+            'id_users' => $request->id,
+            'saldo' => $request->saldo,
+            'bank' => $request->bank
+        ]);
+
+        
+
     }
 
     /**
@@ -59,7 +66,7 @@ class KonfirmasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -71,7 +78,17 @@ class KonfirmasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        //$request->validate([
+          //  'bukti_transfer'     =>  'required|image|mimes:jpeg,png,jpg|max:2048'
+        //]);
+        	// update data pegawai
+	DB::table('payments')->where('id',$request->id)->update([
+        'bukti_transfer' => $request->bukti
+        
+	]);
+	// alihkan halaman ke halaman pegawai
+	return redirect('/profil');
     }
 
     /**

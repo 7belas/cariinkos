@@ -6,6 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Konfirmasi extends Model
 {
-    protected $table= "payments";
-    protected $fillable = ['file'];
+  
 }

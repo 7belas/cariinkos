@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,11 @@ class HomeController extends Controller
     }
 
     public function profil(){
-        return view('home');
+        $users = DB::table('users')->get();
+        $payments = DB::table('payments')->get();
+        
+
+        return view('home')->with('users',$users)->with('payments', $payments);
     }
     public function isisaldo(){
         return view('isisaldo');

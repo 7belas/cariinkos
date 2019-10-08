@@ -30,7 +30,14 @@
                             <td> {{ Auth::user()->email }}</td>
                         </tr>
                         <th>Saldo</th>
-                            <td> {{ Auth::user()->saldo }}</td>
+                        @foreach($payments as $p)
+                        @if($p->verifikasi === 'Ya')
+                        
+                            <td> {{$p->saldo}}</td>
+                        @else
+                            
+                        @endif
+                        @endforeach
                             <td> <a href="{{url('/profil/isisaldo')  }}" class="btn btn-primary" role="button">Isi Saldo </a>
                             </td>
                         </tr>                       

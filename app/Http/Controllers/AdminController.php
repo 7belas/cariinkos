@@ -17,8 +17,15 @@ class AdminController extends Controller
     {
         
         $users = DB::table('users')->get();
+        $payments = DB::table('payments')->get();
+        
 
-        return view('admin', ['users' => $users]);
+        return view('admin')->with('users',$users)->with('payments', $payments);
+    }
+
+    public function payment(){
+        $payments = DB::table('payments')->get();
+        return view('admin',['payments' => $payments],['users'=>$users]);
     }
 
     /**
@@ -61,7 +68,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+
     }
 
     /**
@@ -71,9 +78,12 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request)
     {
-        //
+        DB::table('payments')
+        ->where('id', 1)
+        ->update(['verifikasi' => 'Ya']);
+        return redirect ('/admin');
     }
 
     /**

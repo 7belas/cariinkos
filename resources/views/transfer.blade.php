@@ -27,10 +27,10 @@
                         </tbody>
                 </table>
 
-                <form action="/konfirmasi/store" method="post" enctype="multipart/form-data"> 
+                <form action="/konfirmasi/update" method="post" enctype="multipart/form-data"> 
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Masukkan Bukti transfer</label>
-                        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" name="bukti" class="form-control-file" id="exampleFormControlFile1">
                     </div>
                     <input type="submit" class="btn btn-primary" role="button" name ="submit" value="Konfirmasi">
                     </form>

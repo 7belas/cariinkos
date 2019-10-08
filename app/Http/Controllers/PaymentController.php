@@ -15,9 +15,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-    
- 
-    	// mengirim data pegawai ke view pegawai
+        return view('isisaldo');
     }
 
     /**
@@ -41,7 +39,7 @@ class PaymentController extends Controller
     {
 
         DB::table('payments')->insert([
-            'id_users' => $request->id,
+            'id_user' => $request->id,
             'saldo' => $request->saldo,
             'bank' => $request->bank
         ]);
