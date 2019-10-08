@@ -9,6 +9,8 @@
 
                 <div class="card-body">
 
+                <form action="/profil/isisaldo/store" method="post">
+                        {{ csrf_field() }}
                 <table class="table">
                 
                     <tbody>
@@ -16,31 +18,32 @@
                         
                         <tr>
                         <th>Pilih Bank</th>
-                            <td> <div class="radio">
-                            <label><input type="radio" name="1" checked>Bank BRI</label>
-                            </div></td>
-                            
-                            <th scope ="row"> <td> <div class="radio">
-                            <label><input type="radio" name="2" checked>Bank BNI</label>
-                            </div></td></th>   
-
-                            <td> <div class="radio">
-                            <label><input type="radio" name="3" checked>Bank BCA</label>
-                            </div></td>
-
-                            <td> <div class="radio">
-                            <label><input type="radio" name="4" checked>Bank Mandiri</label>
-                            </div></td>
+                        <td>
+                        <div class="radio">
+                        <label><input type="radio" name="bank" value="Bank BRI">Bank BRI</label>
+                        </div> </td>
+                        <td>
+                        <div class="radio">
+                        <label><input type="radio" name="bank" value="Bank BNI"> Bank BNI</label>
+                        </div></td>
+                        <td>
+                        <div class="radio">
+                        <label><input type="radio" name="bank " value="Bank BCA" >Bank BCA</label>
+                        </div></td>
+                        <td> 
+                        <div class="radio">
+                        <label><input type="radio" name="bank" value="Bank Mandiri" >Bank Mandiri</label>
+                        </div> </td> 
                         
                         </tr>
                         </tr>
                         </tbody>
                         </table>
+                        
 
-                        <form action="/isisaldo/transfer" method="post">
-                        {{ csrf_field() }}
+                        <input type="hidden" id="id" name="id" value="{{ Auth::user()->id }}">
                         Masukkan jumlah saldo <input type="number" name="saldo" required="required"> <br/>
-                        <input type="submit" value="Transfer">
+                        <input type="submit" name ="submit" value="Transfer">
                     </form>
 
                         

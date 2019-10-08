@@ -12,19 +12,30 @@
                     <tbody>
                         <tr>
                         
+                        @foreach($payments as $p)
                         <tr>
                         <th>Total Pembayaran</th>
-                            <td> Rp.1000000</td>
+                            <td> {{$p->saldo}} </td>
                             
                         </tr>
                         <tr>
                         <tr>
-                        <th>Bank BRI</th>
+                        <th>{{$p->bank}}</th>
                             <td>87891723891723 </td>
                         </tr>
+                        @endforeach
                         </tbody>
                 </table>
-                         <a href="{{route('payment.create')  }}" class="btn btn-primary" role="button">Konfirmasi </a>
+
+                <form action="/konfirmasi/store" method="post" enctype="multipart/form-data"> 
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Masukkan Bukti transfer</label>
+                        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                    <input type="submit" class="btn btn-primary" role="button" name ="submit" value="Konfirmasi">
+                    </form>
+                    
+                         
                         
                         </tr>                       
                     

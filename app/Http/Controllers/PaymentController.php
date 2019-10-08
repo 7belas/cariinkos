@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -13,7 +15,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+    
+ 
+    	// mengirim data pegawai ke view pegawai
     }
 
     /**
@@ -24,7 +28,7 @@ class PaymentController extends Controller
     public function create()
     {
         //
-        return view ('transfer')
+        
     }
 
     /**
@@ -35,7 +39,15 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        DB::table('payments')->insert([
+            'id_users' => $request->id,
+            'saldo' => $request->saldo,
+            'bank' => $request->bank
+        ]);
+
+        return redirect('/profil/isisaldo/transfer');
+
     }
 
     /**

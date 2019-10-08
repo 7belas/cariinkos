@@ -31,7 +31,7 @@
                         </tr>
                         <th>Saldo</th>
                             <td> {{ Auth::user()->saldo }}</td>
-                            <td> <a href="{{url('/isisaldo')  }}" class="btn btn-primary" role="button">Isi Saldo </a>
+                            <td> <a href="{{url('/profil/isisaldo')  }}" class="btn btn-primary" role="button">Isi Saldo </a>
                             </td>
                         </tr>                       
                     </tbody>

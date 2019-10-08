@@ -22,10 +22,16 @@ Route::get('/kirimemail','KosEmailController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profil', 'HomeController@profil')->name('profil');
-Route::get('/isisaldo', 'HomeController@isisaldo')->name('isisaldo');
+Route::get('/admin', 'AdminController@index');
 
-Route::post('/isisaldo/transfer','PaymentController@store');
+Route::get('/profil', 'HomeController@profil')->name('profil');
+Route::get('/profil/isisaldo', 'PaymentController@index');
+Route::post('/profil/isisaldo/store','PaymentController@store');
+Route::post('/konfirmasi/store','KonfirmasiController@store');
+
+Route::get('/profil/isisaldo/transfer', 'KonfirmasiController@index'); 
+
+
 
 
 Route::get('/pesanan', function () {
