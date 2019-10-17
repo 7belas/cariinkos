@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,33 +12,106 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// super admin route
+Route::middleware('checksuper')->group(function() {
+    // process routes
+    Route::post('/admin', 'AdminController@add');
+    Route::delete('/admin/{id}', 'AdminController@delete');
+    Route::delete('/admin/pelanggan/{id}','AdminController@deletePelanggan');
+    Route::get('/admin/data', 'AdminController@datatables');
+
+    // page routes
+    Route::get('/admin/registeradmin', 'AdminController@register');
+    Route::get('/admin/dataadmin', 'AdminController@list');
 });
 
-Route::get('/172410101106', 'AdminController@index')->name('home');
 
-Route::get('/kirimemail','KosEmailController@index');
+// admin route
+Route::middleware('checkadmin')->group(function() {
+    // process routes
+    Route::put('/admin/{id}', 'AdminController@update');
 
-Auth::routes();
+    Route::get('/kategori/data', 'KategoriController@datatables');
+    Route::post('/kategori', 'KategoriController@add');
+    Route::put('/kategori/{id}', 'KategoriController@update');
+    Route::delete('/kategori/{id}', 'KategoriController@delete');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/kemasan/data', 'KemasanController@datatables');
+    Route::post('/kemasan', 'KemasanController@add');
+    Route::put('/kemasan/{id}', 'KemasanController@update');
+    Route::delete('/kemasan/{id}', 'KemasanController@delete');
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/update','AdminController@update'); 
+    Route::get('/produk/data', 'ProdukController@datatables');
+    Route::post('/produk', 'ProdukController@add');
+    Route::put('/produk/{id}', 'ProdukController@update');
+    Route::delete('/produk/{id}', 'ProdukController@delete');
 
-Route::get('/profil', 'HomeController@profil')->name('profil');
-Route::get('/profil/isisaldo', 'PaymentController@index');
-Route::post('/profil/isisaldo/store','PaymentController@store');
-Route::post('/konfirmasi/store','KonfirmasiController@store');
+    Route::get('/admin/pelanggan/topup', 'TransaksiController@datatablesTopUp');
+    Route::get('/admin/pelanggan/data', 'AdminController@datatablesPelanggan');
+    Route::get('/admin/datapelanggan','AdminController@listPelanggan');
+    Route::get('/admin/datatopup','AdminController@listTopUp');
+    Route::get('/admin/saldo/{id}','AdminController@konfTopUp');
+    Route::put('/admin/conf/{id}','TransaksiController@updateTopUp');
 
-Route::get('/profil/isisaldo/transfer', 'KonfirmasiController@index');
-
-Route::post('/konfirmasi/update','KonfirmasiController@update'); 
-
-
-
-
-Route::get('/pesanan', function () {
-    return view('pesanan');
+    // page routes
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/settings', 'AdminController@settings');
+    Route::get('/admin/kategori/add', 'KategoriController@addPage');
+    Route::get('/admin/kategori', 'KategoriController@listPage');
+    Route::get('/admin/kemasan/add', 'KemasanController@addPage');
+    Route::get('/admin/kemasan', 'KemasanController@listPage');
+    Route::get('/admin/produk/add', 'ProdukController@addPage');
+    Route::get('/admin/produk', 'ProdukController@listPage');
+    Route::get('/admin/produk/{id}', 'ProdukController@editPage');
 });
+
+// user pelanggan route
+Route::middleware('checkuser')->group(function() {
+    // process route
+    Route::post('/user/keranjang/{id}','PelangganController@simpanProdukKeKeranjang');
+    Route::delete('/user/keranjang/{id}','PelangganController@buangProdukDariKeranjang');
+
+    // page route
+
+    Route::get('/produk/datauser', 'ProdukController@datatablesUser');
+    Route::get('/user/produkku/tambah', 'ProdukController@addPageUser');
+
+    Route::get('/user/produkku', 'ProdukController@listPageUser');
+    Route::get('/user/produkku/{id}', 'ProdukController@editPageUser');
+    Route::put('/produkku/{id}', 'ProdukController@updateUser');
+    Route::delete('user/produkku/{id}', 'ProdukController@deleteUser');
+    Route::get('/user/{id}/edit', 'ProdukController@editPageUser');
+    Route::post('/user/produk', 'ProdukController@addUser');
+
+    Route::put('/user/{id}', 'PelangganController@update');
+    Route::put('/user/saldo/{id}', 'TransaksiController@confSaldo');
+    Route::post('/user/saldo/req', 'TransaksiController@addSaldo');
+    Route::get('/user/delete', 'PelangganController@deleteAccountPage');
+    Route::get('/user/keranjang','PelangganController@keranjang');
+    Route::get('/user/profil', 'PelangganController@profilPage');
+    Route::get('/user/saldo', 'PelangganController@saldoPage');
+    Route::get('/user/saldo/konfirmasi', 'PelangganController@saldoKonfPage');
+    Route::get('/user/pesanan', 'PelangganController@pesananPage');
+});
+
+// admin and user route
+Route::middleware('checkuseradmin')->group(function() {
+    Route::put('/user/{id}', 'PelangganController@update');
+    Route::delete('/user/{id}', 'PelangganController@delete');
+});
+
+Route::get('/logout/{entity}', 'Auth\LogoutController@index');
+Route::post('/user/register', 'PelangganController@register');
+Route::post('/user/login', 'PelangganController@auth');
+Route::post('/admin/login', 'AdminController@auth');
+
+// route guest
+Route::get('/', 'HomeController@index');
+Route::get('/produk', 'HomeController@produkPage');
+Route::get('/contact', 'HomeController@kontakPage');
+Route::get('/login', 'HomeController@login');
+Route::get('/register', 'HomeController@register');
+Route::get('/admin/login', 'AdminController@login');
+
+// route produk
+Route::get('/produk/{produk_id}', 'ProdukController@detailProduk');
