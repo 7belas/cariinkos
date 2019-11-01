@@ -34,7 +34,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Beranda</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/produk') }}">Produk</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/produk') }}">Kosan</a></li>
                             @unless (isset(session('login')['pelanggan']))
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -59,7 +59,7 @@
                                     <div class="dropdown-menu">
                                       <a class="dropdown-item" href="{{ url('/user/saldo') }}">Saldo</a>
                                         <a class="dropdown-item" href="{{ url('/user/profil') }}">Profil Saya</a>
-                                        <a class="dropdown-item" href="{{ url('/user/pesanan') }}" onclick="event.preventDefault(); alert('Belum'.toLocaleUpperCase());">Pesanan Saya</a>
+                                        <a class="dropdown-item" href="{{ url('/user/pesanan') }}" onclick="event.preventDefault(); alert(''.toLocaleUpperCase());">Pesanan Saya</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                                     </div>
@@ -78,7 +78,7 @@
         <div class="search_input" id="search_input_box">
             <div class="container">
                 <form class="d-flex justify-content-between" method="GET" action="{{ url('/produk') }}">
-                    <input type="text" name="search-key" class="form-control" id="search_input" placeholder="Cari Produk ...">
+                    <input type="text" name="search-key" class="form-control" id="search_input" placeholder="Cari Kosan ...">
                     <button type="submit" class="btn"></button>
                     <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
                 </form>

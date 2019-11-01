@@ -33,7 +33,7 @@
                                         <div class="text-secondary">Harga produk</div>
                                         <div class="text-dark">
                                             <i class="fas fa-tags"></i>
-                                            <span>{{ rupiah($produk->produk_harga) }}/{{ $produk->kemasan->kemasan_kode }}</span>
+                                            <span>{{ rupiah($produk->produk_harga) }}/{{ $produk->kemasan->kemasan_kode }} Bulan</span>
                                         </div>
                                     </div>
                                     <div class="my-1">
@@ -61,10 +61,18 @@
                                         <div class="text-secondary">Stok Produk</div>
                                         <div class="text-dark">
                                             <i class="fas fa-cubes"></i>
-                                            <span>{{ $produk->produk_stok }} {{ $produk->kemasan->kemasan_kode }}</span>
+                                            <span>{{ $produk->produk_stok }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="my-1">
+                                        <div class="text-secondary">Pemilik</div>
+                                        <div class="text-dark">
+                                            <i class="fas fa-user"></i>
+                                            <span>{{ $produk->pemilik }}</span>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="card-footer">
                                     @if (isset(session('login')['pelanggan']))
                                         @if ($produk->produk_stok !== 0)

@@ -43,6 +43,28 @@ class PelangganController extends Controller {
 
     }
 
+    public function pesananPage(Request $req) {
+        $loginSession = $req->session()->get('login');
+        $pelangganId = $loginSession['id'];
+        $pelanggan = Pelanggan::find($req->session()->get('login')['id']);
+  
+        $transaksi = Transaksi::where('transaksi_pelanggan',$pelangganId)->where('transaksi_deskripsi','top up')->
+        where(function ($query) {
+        $query->where('transaksi_bayar','Belum Dibayar')->orWhere('transaksi_bayar','Tidak Valid');
+      })->first();
+  
+        if($transaksi){
+          return view('app.confTopUp',['transaksi' => $transaksi,'user' => $pelanggan]);
+        }else{
+  
+          return view('app.pesananuser', [
+              'user' => $pelanggan
+          ]);
+        }
+  
+  
+      }
+
     public function register(Request $req) {
         try {
             $pelanggan = new Pelanggan();

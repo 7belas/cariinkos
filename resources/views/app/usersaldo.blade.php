@@ -46,7 +46,7 @@
                       <form class="row login_form" style="max-width: 450px" action="{{ url('/user/saldo/req') }}" method="POST" id="saldoform">
                           @csrf
                           <div class="col-md-12 form-group">
-                              <input required type="number" value="" class="form-control" id="nominal" name="nominal" placeholder="Nominal Top Up" min="10000" step="5000" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nominal Top Up'">
+                              <input required type="number" value="" class="form-control" id="nominal" name="nominal" placeholder="Nominal Top Up" min="10000" max ="5000000" step="5000" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nominal Top Up'">
                           </div>
 
                             <div class="form-check">

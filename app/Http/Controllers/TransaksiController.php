@@ -46,6 +46,32 @@ class TransaksiController extends Controller {
       return redirect('/user/saldo');
     }
 
+    public function checkOut(Request $req){
+        $random = int::random(10);
+        $loginSession = $req->session()->get('login');
+        $pelangganId = $loginSession['id'];
+        try{
+          $transaksi = new Transaksi();
+          $transaksi->transaksi_id=$random;
+          $transaksi->transaksi_pelanggan = $pelangganId;
+          $transaksi->transaksi_to = 'admin';
+          $transaksi->transaksi_nominal = trim($req->nominal);
+          $transaksi->transaksi_deskripsi='checkout';
+          $transaksi->save();
+          $req->session()->flash('msg', [
+              'success' => true,
+              'msg' => 'Checkout berhasil dilakukan!'
+          ]);
+          return redirect('/user/saldo');
+        }catch (Exception $ex) {
+            $req->session()->flash('msg', [
+                'success' => false,
+                'msg' => "Saldo anda kurang,mohon topup terlebih dahulu, {$ex->getMessage()}"
+            ]);
+        }
+        return redirect('/user/saldo');
+      }
+
     public function confSaldo(Request $req){
       $this->validate($req, [
           'gambar' => 'image|mimes:jpg,png,jpeg'

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Keranjang Saya')
+@section('title','Pesanan')
 
 @section('heads')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -83,7 +83,7 @@
                                 @csrf
                             <div class="container my-3">
                                 <h5 class="text-right mr-2">Total: {{ $totalproduk }} Produk</h5>
-                                <button type="submit" class="primary-btn" style="float: right" onclick="event.preventDefault(); alert(''.toLocaleUpperCase());">
+                                <button type="submit" class="primary-btn" style="float: right" onclick="event.preventDefault(); alert('Belum'.toLocaleUpperCase());">
                                     <i class="far fa-credit-card"></i>
                                     <span>Proses Checkout: {{ rupiah($totalharga) }}</span>
                                 </button>

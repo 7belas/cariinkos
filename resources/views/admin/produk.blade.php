@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Produk')
+@section('title', 'Data Kosan')
 
 @section('content')
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        Data Produk
+        Data Kosan
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Gambar Produk</th>
+                        <th>Gambar Kosan</th>
                         <th>Nama</th>
                         <th>Kategori</th>
                         <th>Kemasan</th>

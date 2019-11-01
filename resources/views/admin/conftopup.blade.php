@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group col-12 col-sm-12 col-md-12">
-                        <label for="nama">Kode</label>
+                        <label for="nama">No Rekening</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-primary text-white">
