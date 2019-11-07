@@ -50,6 +50,13 @@
                                             <span>{{ $produk->produk_deskripsi }}</span>
                                         </div>
                                     </div>
+                                    <div class="my-1">
+                                        <div class="text-secondary">Alamat</div>
+                                        <div class="text-dark">
+                                            <i class="fas fa-info"></i>
+                                            <span>{{ $produk->produk_alamat }}</span>
+                                        </div>
+                                    </div>
                                     <!-- <div class="my-1">
                                         <div class="text-secondary">Penjual produk</div>
                                         <div class="text-dark">

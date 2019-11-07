@@ -88,6 +88,19 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5">
+                        <label for="deskripsi">Alamat</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-primary text-white">
+                                    &nbsp;
+                                </span>
+                            </div>
+                            <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5">
                         <label for="gambar">Gambar Produk</label>
                         <div class="input-group">
                             <div class="input-group-prepend">

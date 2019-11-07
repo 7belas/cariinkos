@@ -19,6 +19,7 @@ class Produk extends Model
             'produk_deskripsi',
             'produk_stok',
             'produk_gambar',
+            'produk_alamat',
             'pemilik'
         ]);
     }

@@ -57,6 +57,7 @@ class ProdukController extends Controller {
             $produk->produk_harga = (double) $req->harga;
             $produk->produk_stok = (int) $req->stok;
             $produk->produk_deskripsi = trim($req->deskripsi ?: 'Tidak ada deskripsi');
+            $produk->produk_alamat = trim($req->alamat);
             if ($req->file('gambar')) {
                 $this->upload->delete($produk->produk_gambar);
                 $produk->produk_gambar = $this->upload->image($req->file('gambar'));
@@ -106,6 +107,7 @@ class ProdukController extends Controller {
             $produk->produk_harga = (double) $req->harga;
             $produk->produk_stok = (int) $req->stok;
             $produk->produk_deskripsi = trim($req->deskripsi ?: 'Tidak ada deskripsi');
+            $produk->produk_alamat = trim($req->alamat);
             $produk->produk_gambar = $uploadedPath;
             $produk->pemilik = 'admin';
             $produk->save();
@@ -218,6 +220,7 @@ class ProdukController extends Controller {
             $produk->produk_harga = (double) $req->harga;
             $produk->produk_stok = (int) $req->stok;
             $produk->produk_deskripsi = trim($req->deskripsi ?: 'Tidak ada deskripsi');
+            $produk->produk_alamat = trim($req->alamat);
             if ($req->file('gambar')) {
                 $this->upload->delete($produk->produk_gambar);
                 $produk->produk_gambar = $this->upload->image($req->file('gambar'));
@@ -285,6 +288,7 @@ public function addUser(Request $req) {
         $produk->produk_harga = (double) $req->harga;
         $produk->produk_stok = (int) $req->stok;
         $produk->produk_deskripsi = trim($req->deskripsi ?: 'Tidak ada deskripsi');
+        $produk->produk_alamat = trim($req->alamat);
         $produk->produk_gambar = $uploadedPath;
         $produk->pemilik = $pelangganId;
         $produk->save();
